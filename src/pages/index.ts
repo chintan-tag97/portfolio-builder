@@ -1,0 +1,11 @@
+export { default as Home } from './Home';
+export { default as Login } from './Login';
+export { default as Register } from './Register';
+export { default as ResetPassword } from './ResetPassword';
+export { default as Dashboard } from './Dashboard';
+export { default as Sections } from './Sections';
+export { default as Designs } from './Designs';
+export { default as AddDesign } from './AddDesign';
+export { default as EditDesign } from './EditDesign';
+export { default as Builder } from './Builder';
+export { default as NotFound } from './NotFound';

@@ -1,0 +1,381 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --shadow-blue: 0 0 5px rgba(59, 130, 246, 0.5);
+  --shadow-3xl: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --shadow-sidebar: 0px 15px 40px 2px rgba(0, 0, 0, 0.2);
+
+  --breakpoint-wide: 1440px;
+
+  --animate-fade-in-up: fade-in-up 0.6s ease-in-out;
+  --animate-fade-in: fade-in 0.3s ease-in forwards;
+  --animate-scale-in: scale-in 0.3s ease-out forwards;
+  --animate-float-in: float-in 0.4s ease-in-out forwards;
+  --animate-fade-in-fast: fade-in-fast 0.15s ease-out forwards;
+  --animate-color-pulse: colorPulse 0.4s ease-out;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-pulse: pulse 3s infinite, float 6s ease-in-out infinite;
+  --animate-ping: ping 3s infinite, float 6s ease-in-out infinite 2s;
+  --animate-bounce: bounce 6s infinite, float 8s ease-in-out infinite 1s;
+  --animate-slide-down: slide-down 0.6s ease-out forwards;
+  --animate-shake: shake 0.5s ease-in-out;
+  --animate-bounce-in: bounce-in 0.6s ease-out forwards;
+  --animate-fade-in-up-login: fade-in-up-login 0.6s ease-out forwards;
+  
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(45px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-up-login {
+    0%{
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-fast {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes float-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes colorPulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+  }
+
+  @keyframes float {
+    0% { 
+      transform: translateY(0px);
+    }
+    50% { 
+      transform: translateY(-10px); 
+    }
+    100% { 
+      transform: translateY(0px);
+    }
+  }
+
+
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-25px);
+    }
+  }
+
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0.3);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+      transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+      transform: translateX(5px);
+    }
+  }
+} 
+  
+
+
+/* Theme-specific styles */
+body.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border-color: #e5e7eb;
+  --autofill-bg: #ffffff;
+  --autofill-text: #111827;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --border-color: #374151;
+  --autofill-bg: #1f2937;
+  --autofill-text: #ffffff;
+  background-color: #111827; /* bg-gray-900 equivalent */
+  color: var(--text-primary);
+}
+
+/* Apply dark mode styles */
+body.dark {
+  @apply bg-gray-900;
+}
+
+/* Scrollbar styles */
+/* For Webkit browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.light ::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 6px;
+}
+
+body.light ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 6px;
+}
+
+body.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+}
+
+body.light * {
+  scrollbar-color: #d1d5db transparent;
+}
+
+body.dark * {
+  scrollbar-color: #4b5563 transparent;
+}
+
+/* Handle autofill styling in dark mode - Webkit browsers */
+body.dark input:-webkit-autofill,
+body.dark input:-webkit-autofill:hover, 
+body.dark input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #1f2937 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: white;
+  border-color: #4B5563;
+}
+
+/* Handle autofill styling in light mode - Webkit browsers */
+body.light input:-webkit-autofill,
+body.light input:-webkit-autofill:hover, 
+body.light input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #111827;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox specific autofill styles */
+@-moz-document url-prefix() {
+  body.dark input:-moz-autofill,
+  body.dark input:-moz-autofill:focus {
+    background-color: #1f2937 !important;
+    color: white !important;
+  }
+  
+  body.light input:-moz-autofill,
+  body.light input:-moz-autofill:focus {
+    background-color: white !important;
+    color: #111827 !important;
+  }
+}
+
+/* CSS class for autofilled inputs */
+body.dark .is-autofilled {
+  background-color: #1f2937 !important;
+  color: white !important;
+  border-color: #4B5563 !important;
+  box-shadow: none !important;
+}
+
+body.light .is-autofilled {
+  background-color: white !important;
+  color: #111827 !important;
+  border-color: #D1D5DB !important;
+}
+
+@layer components {
+  .max-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+@utility padding {
+  @apply sm:px-16 px-8 sm:py-24 py-12;
+}
+
+@utility padding-x {
+  @apply sm:px-16 px-8;
+}
+
+@utility padding-y {
+  @apply sm:py-24 py-12;
+}
+
+@utility padding-l {
+  @apply sm:ps-16 ps-8;
+}
+
+@utility padding-r {
+  @apply sm:pe-16 pe-8;
+}
+
+@utility padding-t {
+  @apply sm:pt-24 pt-12;
+}
+
+@utility padding-b {
+  @apply sm:pb-24 pb-12;
+}
+
+/* Card hover animations */
+.card-hover {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.card-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.card-hover:hover::after {
+  @apply opacity-100;
+}
+
+.card-hover::after {
+  @apply content-[''] absolute top-0 left-0 w-full h-full rounded-lg opacity-0 shadow-xl transition-opacity duration-300 ease-in-out -z-10 pointer-events-none;
+}
+
+/* Button hover animations */
+.hover-scale {
+  @apply inline-flex items-center justify-center transition-all duration-200 ease-in-out;
+}
+
+.hover-scale:hover {
+  @apply transform scale-[1.2];
+}
+
+.hover-scale:active {
+  @apply transform scale-95;
+}
+
+/* Toggle switch hover animations */
+.toggle-hover {
+  @apply relative;
+}
+
+.toggle-hover:hover div {
+  @apply brightness-105 shadow-blue;
+}
+
+.toggle-hover:hover div::after {
+  @apply shadow-sm;
+}
+
+/* ID badge hover animations */
+.id-badge {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.card-hover:hover .id-badge {
+  @apply transform -translate-x-0.5 scale-105 shadow-sm;
+}
+
+/* Login page animations */

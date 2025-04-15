@@ -1,0 +1,11 @@
+.toast-white-icon svg {
+  fill: white !important;
+}
+
+.toast-white-icon .Toastify__toast-icon > svg {
+  fill: white !important;
+}
+
+.toast-white-icon .Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.7);
+} 
